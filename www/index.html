@@ -118,15 +118,62 @@ function change_page(data) {
 <style>
 .color1 {
 	background-color:#eeeeee;
-	border:1px solid #dddddd;
+	width:50%;
+	direction:rtl;
+	text-align:center;
+	cursor:pointer;
+	margin:10px;
+	float:right;
+	border-radius:10px;
+}
+.color1-td {
+	background-color:#ffffff;
 	color:#555555;
-	width:100%; direction:rtl; text-align:center; cursor:pointer; margin:auto; margin-top:10px;
+	height:35px;
+	border-bottom-right-radius:10px;
+	border-bottom-left-radius:10px;
+	text-shadow:none;
 }
 .button {
 height:35px; width:90px; background:#ff855f; border:1px solid #d95127; border-radius:5px; float:left; margin:5px; color:#ffffff; text-align:center; font-weight:normal; font-size:12px;
 }
 .button:hover {
 	background-color:#ffa184;
+}
+@media all and (min-width: 1201px) {
+	.color1 {
+		width:-moz-calc(20% - 20px);
+		width:-webkit-calc(20% - 20px);
+		width:-o-calc(20% - 20px);
+		width:calc(20% - 20px);
+	}
+}
+
+@media all and (max-width: 1200px) and (min-width: 901px) {
+	.color1 {
+		width:-moz-calc(25% - 20px);
+		width:-webkit-calc(25% - 20px);
+		width:-o-calc(25% - 20px);
+		width:calc(25% - 20px);
+	}
+}
+
+@media all and (max-width: 900px) and (min-width: 601px) {
+	.color1 {
+		width:-moz-calc(33.33% - 20px);
+		width:-webkit-calc(33.33% - 20px);
+		width:-o-calc(33.33% - 20px);
+		width:calc(33.33% - 20px);
+	}
+}
+
+@media all and (max-width: 600px) {
+	.color1 {
+		width:-moz-calc(50% - 20px);
+		width:-webkit-calc(50% - 20px);
+		width:-o-calc(50% - 20px);
+		width:calc(50% - 20px);
+	}
 }
 </style>
 </head>
@@ -139,17 +186,10 @@ height:35px; width:90px; background:#ff855f; border:1px solid #d95127; border-ra
 </table>
 <table cellpadding="0" cellspacing="0" style="width:100%; direction:rtl;">
 <tr>
-<td style="width:50%; padding:5px;">
+<td>
     <script>
-	for(j=0;j<10;j++) {
-		document.write('<table class="color1" onClick="javascript:change_page('+j+');"><tr><td style="height:100px; background-image:url(images/'+j+'.jpg); background-size:cover; background-position:center"></td></tr><tr><td style="padding:5px">'+property[j]+'</td></tr></table>');
-	}
-	</script>
-</td>
-<td style="width:50%; padding:5px;">
-    <script>
-	for(j=10;j<property.length;j++) {
-		document.write('<table class="color1" onClick="javascript:change_page('+j+');"><tr><td style="height:100px; background-image:url(images/'+j+'.jpg); background-size:cover; background-position:center"></td></tr><tr><td style="padding:5px">'+property[j]+'</td></tr></table>');
+	for(j=1;j<property.length;j++) {
+		document.write('<table cellpadding="0" cellspacing="0" class="color1" onClick="javascript:change_page('+j+');" style="background-image:url(images/'+j+'.jpg); background-size:cover; background-position:center"><tr><td style="height:100px"></td></tr><tr><td class="color1-td">'+property[j]+'</td></tr></table>');
 	}
 	</script>
 </td>
