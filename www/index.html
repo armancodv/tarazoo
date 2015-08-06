@@ -119,14 +119,9 @@ function change_page(data) {
 .color1 {
 	background-color:#eeeeee;
 	width:100%;
-	width:-moz-calc(100% - 20px);
-	width:-webkit-calc(100% - 20px);
-	width:-o-calc(100% - 20px);
-	width:calc(100% - 20px);
 	direction:rtl;
 	text-align:center;
 	cursor:pointer;
-	margin:10px;
 	border-radius:10px;
 }
 .color1-td {
@@ -154,14 +149,14 @@ function change_page(data) {
 </table>
 <table cellpadding="0" cellspacing="0" style="width:100%; direction:rtl;">
 <tr>
-<td style="width:50%; vertical-align:top">
+<td style="width:50%; vertical-align:top; padding:10px">
     <script>
 	for(j=1;j<11;j++) {
 		document.write('<table cellpadding="0" cellspacing="0" class="color1" onClick="javascript:change_page('+j+');" style="background-image:url(images/'+j+'.jpg); background-size:cover; background-position:center"><tr><td style="height:100px"></td></tr><tr><td class="color1-td">'+property[j]+'</td></tr></table>');
 	}
 	</script>
 </td>
-<td style="width:50%; vertical-align:top">
+<td style="width:50%; vertical-align:top; padding:10px">
     <script>
 	for(j=11;j<property.length;j++) {
 		document.write('<table cellpadding="0" cellspacing="0" class="color1" onClick="javascript:change_page('+j+');" style="background-image:url(images/'+j+'.jpg); background-size:cover; background-position:center"><tr><td style="height:100px"></td></tr><tr><td class="color1-td">'+property[j]+'</td></tr></table>');
