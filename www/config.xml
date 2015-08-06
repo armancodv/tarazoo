@@ -3,6 +3,7 @@
 	<name>ترازو</name>
 	<description>ترازو یک برنامه ی تبدیل واحد (مبدل یا converter) جامع می باشد. شما با ورود به هر بخش می توانید واحد مورد نظر خود را به راحتی به واحد دیگر تبدیل نمایید. محیط برنامه به صورت کاملا کاربر پسند طراحی شده است تا کاربران در هر مکانی و با هر وسیله ای بتوانند از آن به راحتی استفاده نمایند.</description>
 	<author>armanco</author>
+    <preference name="permissions"           value="none" />
     <preference name="phonegap-version"           value="3.6.3" />          <!-- all: current version of PhoneGap -->
     <preference name="orientation"                value="default" />        <!-- all: default means both landscape and portrait are enabled -->
     <preference name="target-device"              value="universal" />      <!-- all: possible values handset, tablet, or universal -->
