@@ -16,7 +16,6 @@ function onLoad() {
     } else {
         initApp();
     }
-	createSelectedBanner();
 }
 
 var admobid = {};
@@ -38,74 +37,10 @@ if( /(android)/i.test(navigator.userAgent) ) {
 }
     
 function initApp() {
-if (! AdMob ) { return; }
-initAd();
-    // display a banner at startup
-    createSelectedBanner();
-}
-function initAd(){
-    var defaultOptions = {
-        // bannerId: admobid.banner,
-        // interstitialId: admobid.interstitial,
-        // adSize: 'SMART_BANNER',
-        // width: integer, // valid when set adSize 'CUSTOM'
-        // height: integer, // valid when set adSize 'CUSTOM'
-        position: AdMob.AD_POSITION.BOTTOM_CENTER,
-        // offsetTopBar: false, // avoid overlapped by status bar, for iOS7+
-        bgColor: 'black', // color name, or '#RRGGBB'
-        // x: integer,		// valid when set position to 0 / POS_XY
-        // y: integer,		// valid when set position to 0 / POS_XY
-        isTesting: true, // set to true, to receiving test ad for testing purpose
-        // autoShow: true // auto show interstitial ad when loaded, set to false if prepare/show
-    };
-    AdMob.setOptions( defaultOptions );
-    registerAdEvents();
-}
-// optional, in case respond to events or handle error
-function registerAdEvents() {
-    // new events, with variable to differentiate: adNetwork, adType, adEvent
-    document.addEventListener('onAdFailLoad', function(data){ 
-    });
-    document.addEventListener('onAdLoaded', function(data){});
-    document.addEventListener('onAdPresent', function(data){});
-    document.addEventListener('onAdLeaveApp', function(data){});
-    document.addEventListener('onAdDismiss', function(data){});
-}
-
-// click button to call following functions
-function getSelectedAdSize() {
-    var i = document.getElementById("adSize").selectedIndex;
-    var items = document.getElementById("adSize").options;
-    return items[i].value;
-}
-function getSelectedPosition() {
-    var i = document.getElementById("adPosition").selectedIndex;
-    var items = document.getElementById("adPosition").options;
-    return parseInt( items[i].value );
-}
-function createSelectedBanner() {
-	var overlap = document.getElementById('overlap').checked;
-    var offsetTopBar = document.getElementById('offsetTopBar').checked;
-    AdMob.createBanner( {adId:admobid.banner, overlap:overlap, offsetTopBar:offsetTopBar, adSize: getSelectedAdSize(), position:getSelectedPosition()} );
-}
-function createBannerOfGivenSize() {
-    var w = document.getElementById('w').value;
-    var h = document.getElementById('h').value;
-    
-    AdMob.createBanner( {adId:admobid.banner,
-                       adSize:'CUSTOM', width:w, height:h,
-                       position:getSelectedPosition()} );
-}
-function showBannerAtSelectedPosition() {
-    AdMob.showBanner( getSelectedPosition() );
-}
-function showBannerAtGivenXY() {
-    var x = document.getElementById('x').value;
-    var y = document.getElementById('y').value;
-    AdMob.showBannerAtXY(x, y);
-}
-function prepareInterstitial() {
-        AdMob.prepareInterstitial({adId:admobid.interstitial, autoShow:false});
+	AdMob.createBanner( {
+    adId: admobid.banner, 
+    position: AdMob.AD_POSITION.BOTTOM_CENTER, 
+    autoShow: true } );
 }
 </script>
 <div id="page1">
@@ -124,8 +59,10 @@ function prepareInterstitial() {
 	<span id="page2-h1">{{property[property_id]}}</span></td><td class="page-table-bar-left"><a href="javascript:gotopage(1)"><table cellpadding="0" cellspacing="0" class="button"><tr><td>بازگشت</td></tr></table></a>
 	</td></tr>
 	<tr><td class="page-table-input" colspan="2">
-		<input type="text" maxlength="40" ng-model="input_value">
+		<div class="paragraph">مقدار ورودی را وارد نمایید:</div>
+		<input type="number" step="0.0000000001" min="-9999999999999999999999999999999999999999" max="9999999999999999999999999999999999999999" ng-model="input_value" onclick="this.focus();this.select()">
 	<tr><td class="page-table-unit" colspan="2">
+		<div class="paragraph">واحد ورودی را انتخاب نمایید:</div>
 		<table ng-repeat="(p_key, p_value) in unit[property_id]" ng-click="select_unit(p_key)" cellpadding="0" cellspacing="0" class="unit{{show_select_unit[p_key]}}"><tr><td>{{unit[property_id][p_key]}}</td></tr></table>
 		</td></tr>
 		<tr><td class="page-table-main" colspan="2">
